@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "task-cli"
+version = "0.1.0"
+description = "roadmap.sh Task Tracker CLI"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{ name = "w-a-s-chaudhry", email = "w.a.s.chaudhry@proton.me" }]
+
+[project.scripts]
+task-cli = "task_cli:main"
+
+[tool.setuptools]
+py-modules = ["task_cli"]
