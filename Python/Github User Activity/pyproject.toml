@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "github-activity"
+version = "0.1.0"
+description = "roadmap.sh GitHub User Activity CLI"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{ name = "w-a-s-chaudhry", email = "w.a.s.chaudhry@proton.me" }]
+dependencies = ["requests>=2.31"]
+
+[project.scripts]
+github-activity = "github_activity:main"
+
+[tool.setuptools]
+py-modules = ["github_activity"]
