@@ -9,6 +9,7 @@ My solutions to projects and tasks from [roadmap.sh](https://roadmap.sh).
 | Python | [Task Tracker](Python/Task%20Tracker/) | https://roadmap.sh/projects/task-tracker |
 | Python | [GitHub User Activity](Python/Github%20User%20Activity/) | https://roadmap.sh/projects/github-user-activity |
 | Python | [Expense Tracker](Python/Expense%20Tracker/) | https://roadmap.sh/projects/expense-tracker |
+| Python | [Number Guessing Game](Python/Number%20Guessing%20Game/) | https://roadmap.sh/projects/number-guessing-game |
 
 ## Structure
 
