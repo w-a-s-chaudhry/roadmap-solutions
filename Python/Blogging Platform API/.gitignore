@@ -1,0 +1,19 @@
+# Python bytecode
+__pycache__/
+*.py[oc]
+
+# Virtual environment
+.venv/
+
+# Secrets
+.env
+
+# Database (dev artefact — re-created from schema.sql on first run)
+*.db
+*.sqlite3
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
