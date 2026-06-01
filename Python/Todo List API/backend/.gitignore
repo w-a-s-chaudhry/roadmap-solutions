@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environment
+.venv/
+
+# Secrets — never commit
+.env
+
+# Database file (dev only — use migrations in production)
+*.db
+*.sqlite3
+
+# pytest cache
+.pytest_cache/
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# Editor
+.vscode/
+.idea/
