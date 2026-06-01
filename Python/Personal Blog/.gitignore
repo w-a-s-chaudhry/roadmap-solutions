@@ -1,0 +1,19 @@
+# Virtual environment
+.venv/
+venv/
+
+# Environment / secrets
+.env
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Live article store (seeded from seed.json on first run)
+articles.json
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

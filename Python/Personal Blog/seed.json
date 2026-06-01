@@ -1,0 +1,100 @@
+[
+  {
+    "id": "a-008",
+    "title": "Notes on writing without an audience",
+    "date": "2026-05-12",
+    "lede": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. The act of writing is the act of paying attention twice.",
+    "body": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      { "type": "h2", "text": "On rhythm" },
+      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+      "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.",
+      { "type": "h2", "text": "On editing" },
+      "Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam."
+    ]
+  },
+  {
+    "id": "a-007",
+    "title": "The quiet joy of static sites",
+    "date": "2026-04-28",
+    "lede": "Lorem ipsum dolor sit amet. There is a certain pleasure in serving HTML files from a folder.",
+    "body": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec id elit non mi porta gravida at eget metus.",
+      "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      { "type": "h2", "text": "Files as a system" },
+      "Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit.",
+      "Donec sed odio dui. Maecenas sed diam eget risus varius blandit sit amet non magna. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo."
+    ]
+  },
+  {
+    "id": "a-006",
+    "title": "What I learned shipping a tiny tool",
+    "date": "2026-04-03",
+    "lede": "Lorem ipsum dolor sit amet, consectetur adipiscing elit — a retrospective on three weekends of focused making.",
+    "body": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.",
+      "Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.",
+      { "type": "h2", "text": "Constraints first" },
+      "Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna.",
+      "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam quis risus eget urna mollis ornare vel eu leo."
+    ]
+  },
+  {
+    "id": "a-005",
+    "title": "Reading more, scrolling less",
+    "date": "2026-03-15",
+    "lede": "Lorem ipsum dolor sit amet. A small habit experiment, and what it actually changed.",
+    "body": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      "Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+      "Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Vestibulum id ligula porta felis euismod semper."
+    ]
+  },
+  {
+    "id": "a-004",
+    "title": "Working in public, gently",
+    "date": "2026-02-20",
+    "lede": "Lorem ipsum dolor sit amet — on showing your work without performing it.",
+    "body": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus.",
+      "Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus et magnis dis parturient montes. Maecenas sed diam eget risus varius blandit.",
+      { "type": "h2", "text": "Audience of one" },
+      "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis."
+    ]
+  },
+  {
+    "id": "a-003",
+    "title": "A modest case for boring tools",
+    "date": "2026-01-30",
+    "lede": "Lorem ipsum dolor sit amet. The unreasonable effectiveness of plain text, cron, and Make.",
+    "body": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum. Curabitur blandit tempus porttitor. Aenean lacinia bibendum nulla sed consectetur.",
+      "Donec ullamcorper nulla non metus auctor fringilla. Etiam porta sem malesuada magna mollis euismod. Vestibulum id ligula porta felis euismod semper.",
+      "Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam."
+    ]
+  },
+  {
+    "id": "a-002",
+    "title": "On keeping a commonplace book",
+    "date": "2026-01-08",
+    "lede": "Lorem ipsum dolor sit amet — a year of writing things down by hand.",
+    "body": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui.",
+      "Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.",
+      { "type": "h2", "text": "The index problem" },
+      "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+    ]
+  },
+  {
+    "id": "a-001",
+    "title": "Why I started this blog",
+    "date": "2025-12-19",
+    "lede": "Lorem ipsum dolor sit amet, consectetur adipiscing elit — and a few small intentions for what comes next.",
+    "body": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. This is the first post.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    ]
+  }
+]
