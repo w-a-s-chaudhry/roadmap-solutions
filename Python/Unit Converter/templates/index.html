@@ -1,0 +1,320 @@
+<!--
+  Author:      Wajid Ali Saleem Chaudhry
+  Description: Single-page frontend for the unit converter. Loads
+               styles from /static/style.css. Sends POST /convert
+               via fetch() and renders the result without reloading.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Unit Converter</title>
+
+  <!--
+    Set theme before <body> renders to avoid a light->dark flash on
+    page load. Reads localStorage first; falls back to the OS-level
+    prefers-color-scheme so first-time visitors get the theme that
+    matches their system. Stays inline (not in style.css / a JS
+    file) because it has to run before any paint.
+  -->
+  <script>
+    (function () {
+      const stored  = localStorage.getItem("theme")
+      const prefers = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches
+      const theme = stored || (prefers ? "dark" : "light")
+      document.documentElement.setAttribute("data-theme", theme)
+    })()
+  </script>
+
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="card">
+
+    <!-- Title + theme toggle -->
+    <div class="header">
+      <div>
+        <p class="eyebrow">Tools</p>
+        <h1>Unit Converter</h1>
+      </div>
+      <button class="theme-toggle" id="themeToggle"
+              type="button"
+              aria-label="Toggle theme" title="Toggle theme">
+        <!-- Sun (shown in light mode) -->
+        <svg class="sun" width="16" height="16"
+             viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="3"
+                  stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 1.5v1.5M8 13v1.5M1.5 8h1.5M13 8h1.5
+                   M3 3l1 1M12 12l1 1
+                   M13 3l-1 1M4 12l-1 1"
+                stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round"/>
+        </svg>
+        <!-- Moon (shown in dark mode) -->
+        <svg class="moon" width="16" height="16"
+             viewBox="0 0 16 16" fill="none">
+          <path d="M13 9.5A5.5 5.5 0 1 1 6.5 3
+                   a4.5 4.5 0 0 0 6.5 6.5Z"
+                fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Category tabs -->
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-cat="length">Length</button>
+      <button class="tab"        data-cat="weight">Weight</button>
+      <button class="tab"        data-cat="temperature">
+        Temperature
+      </button>
+    </div>
+
+    <!-- From / Swap / To -->
+    <div class="from-to">
+      <div>
+        <label class="label" for="fromUnit">From</label>
+        <select id="fromUnit"></select>
+      </div>
+      <button class="swap" id="swapBtn" title="Swap units"
+              aria-label="Swap units">
+        <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+          <path d="M4 2 L4 14 M1.5 4.5 L4 2 L6.5 4.5"
+                stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 14 L10 2 M7.5 11.5 L10 14 L12.5 11.5"
+                stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div>
+        <label class="label" for="toUnit">To</label>
+        <select id="toUnit"></select>
+      </div>
+    </div>
+
+    <!-- Amount -->
+    <label class="label" for="value">Amount</label>
+    <div class="amount-wrap">
+      <input id="value" type="number" step="any" placeholder="0" />
+      <span class="amount-suffix" id="amountSuffix"></span>
+    </div>
+
+    <!-- Convert -->
+    <button class="btn-primary" id="convertBtn">Convert</button>
+
+    <!-- Result -->
+    <div class="result hidden" id="result">
+      <div class="result-breadcrumb" id="resultBreadcrumb"></div>
+      <div class="result-value">
+        <span class="result-number" id="resultNumber"></span>
+        <span class="result-unit"   id="resultUnit"></span>
+      </div>
+    </div>
+
+    <!-- Reset (appears once a conversion has happened) -->
+    <button class="btn-secondary hidden" id="resetBtn"
+            type="button">
+      Reset
+    </button>
+  </div>
+
+  <script>
+    // --- Unit metadata ---
+    // Each entry maps the backend key -> {long, abbr} for display.
+    // Backend (converter.py) only needs the keys; long+abbr are
+    // purely UI sugar so the dropdown can show "Meter (m)".
+    const LABELS = {
+      // length
+      millimeters: { long: "Millimeter", abbr: "mm" },
+      centimeters: { long: "Centimeter", abbr: "cm" },
+      meters:      { long: "Meter",      abbr: "m"  },
+      kilometers:  { long: "Kilometer",  abbr: "km" },
+      inches:      { long: "Inch",       abbr: "in" },
+      feet:        { long: "Foot",       abbr: "ft" },
+      yards:       { long: "Yard",       abbr: "yd" },
+      miles:       { long: "Mile",       abbr: "mi" },
+      // weight
+      mg: { long: "Milligram", abbr: "mg" },
+      g:  { long: "Gram",      abbr: "g"  },
+      kg: { long: "Kilogram",  abbr: "kg" },
+      oz: { long: "Ounce",     abbr: "oz" },
+      lb: { long: "Pound",     abbr: "lb" },
+      // temperature
+      celsius:    { long: "Celsius",    abbr: "°C" },
+      fahrenheit: { long: "Fahrenheit", abbr: "°F" },
+      kelvin:     { long: "Kelvin",     abbr: "K"  },
+    }
+    const UNITS = {
+      length: [
+        "millimeters", "centimeters", "meters", "kilometers",
+        "inches", "feet", "yards", "miles",
+      ],
+      weight:      ["mg", "g", "kg", "oz", "lb"],
+      temperature: ["celsius", "fahrenheit", "kelvin"],
+    }
+
+    // --- DOM refs ---
+    const tabsEl      = document.getElementById("tabs")
+    const fromEl      = document.getElementById("fromUnit")
+    const toEl        = document.getElementById("toUnit")
+    const valueEl     = document.getElementById("value")
+    const suffixEl    = document.getElementById("amountSuffix")
+    const swapBtn     = document.getElementById("swapBtn")
+    const convertBtn  = document.getElementById("convertBtn")
+    const resetBtn    = document.getElementById("resetBtn")
+    const resultEl    = document.getElementById("result")
+    const crumbEl     = document.getElementById("resultBreadcrumb")
+    const numEl       = document.getElementById("resultNumber")
+    const unitEl      = document.getElementById("resultUnit")
+    const themeToggle = document.getElementById("themeToggle")
+
+    // Currently selected category — tracked here instead of a
+    // <select> because we use tab buttons for the UI.
+    let category = "length"
+
+    // Rebuild the From/To dropdowns to match `category`. Each
+    // <option> shows "Long (abbr)" but its value is the raw key.
+    function populateUnits() {
+      const units = UNITS[category]
+      fromEl.innerHTML = ""
+      toEl.innerHTML   = ""
+      units.forEach((u) => {
+        const text = `${LABELS[u].long} (${LABELS[u].abbr})`
+        fromEl.add(new Option(text, u))
+        toEl.add(new Option(text, u))
+      })
+      if (units.length > 1) toEl.selectedIndex = 1
+      updateSuffix()
+    }
+
+    // Sync the small unit text inside the Amount input with the
+    // From dropdown's current selection.
+    function updateSuffix() {
+      const u = fromEl.value
+      suffixEl.textContent = u ? LABELS[u].abbr : ""
+    }
+
+    // Switch active category and refresh dropdowns + suffix.
+    function selectCategory(cat) {
+      category = cat
+      for (const t of tabsEl.querySelectorAll(".tab")) {
+        t.classList.toggle("active", t.dataset.cat === cat)
+      }
+      populateUnits()
+      hideResult()
+    }
+
+    // Swap the From and To selections; useful for "undo direction".
+    function swapUnits() {
+      const tmp = fromEl.value
+      fromEl.value = toEl.value
+      toEl.value   = tmp
+      updateSuffix()
+    }
+
+    // Hide / clear the result panel and the Reset button. Reset
+    // only appears once a conversion has been attempted, so it
+    // tracks the result panel's visibility.
+    function hideResult() {
+      resultEl.classList.add("hidden")
+      resultEl.classList.remove("err")
+      resetBtn.classList.add("hidden")
+    }
+
+    // Render a successful conversion in the peach result panel.
+    // Display rounds to <=4 decimals with trailing zeros stripped
+    // (32.808399 -> 32.8084, 1.0 -> 1).
+    function showResult(value, fromUnit, toUnit, result) {
+      resultEl.classList.remove("hidden", "err")
+      crumbEl.textContent =
+        `${value} ${LABELS[fromUnit].abbr} → ` +
+        `${LABELS[toUnit].long}`
+      numEl.textContent  = parseFloat(Number(result).toFixed(4))
+      unitEl.textContent = LABELS[toUnit].abbr
+      resetBtn.classList.remove("hidden")
+    }
+
+    // Render a server / network error in the result panel (red).
+    function showError(message) {
+      resultEl.classList.remove("hidden")
+      resultEl.classList.add("err")
+      crumbEl.textContent = "Error"
+      numEl.textContent   = message
+      unitEl.textContent  = ""
+      resetBtn.classList.remove("hidden")
+    }
+
+    // Clear the amount and dismiss the result + Reset button.
+    // Leaves category and unit selections intact so the user can
+    // run another conversion in the same direction.
+    function resetAll() {
+      valueEl.value = ""
+      hideResult()
+    }
+
+    // POST the form to /convert and render whatever comes back.
+    async function runConvert() {
+      if (valueEl.value === "") {
+        showError("Please enter a value")
+        return
+      }
+      const payload = {
+        category:  category,
+        value:     valueEl.value,
+        from_unit: fromEl.value,
+        to_unit:   toEl.value,
+      }
+      try {
+        const res = await fetch("/convert", {
+          method:  "POST",
+          headers: { "Content-Type": "application/json" },
+          body:    JSON.stringify(payload),
+        })
+        const data = await res.json()
+        if (!res.ok) {
+          showError(data.error || "Request failed")
+          return
+        }
+        showResult(
+          payload.value, payload.from_unit,
+          payload.to_unit, data.result,
+        )
+      } catch (err) {
+        showError("Could not reach the server")
+      }
+    }
+
+    // --- Theme toggle ---
+    // Flip data-theme on <html> and remember the choice. The inline
+    // <head> script picks the saved value up on the next load.
+    function applyTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme)
+      localStorage.setItem("theme", theme)
+    }
+
+    themeToggle.addEventListener("click", () => {
+      const current =
+        document.documentElement.getAttribute("data-theme")
+      applyTheme(current === "dark" ? "light" : "dark")
+    })
+
+    // --- Wire up events ---
+    tabsEl.addEventListener("click", (e) => {
+      const btn = e.target.closest(".tab")
+      if (btn) selectCategory(btn.dataset.cat)
+    })
+    fromEl.addEventListener("change", updateSuffix)
+    swapBtn.addEventListener("click", swapUnits)
+    convertBtn.addEventListener("click", runConvert)
+    resetBtn.addEventListener("click", resetAll)
+
+    populateUnits()  // first render
+  </script>
+</body>
+</html>
