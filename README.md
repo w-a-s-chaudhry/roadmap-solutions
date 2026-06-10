@@ -16,6 +16,7 @@ My solutions to projects and tasks from [roadmap.sh](https://roadmap.sh).
 | Python | [Personal Blog](Python/Personal%20Blog/) | https://roadmap.sh/projects/personal-blog |
 | Python | [Todo List API](Python/Todo%20List%20API/) | https://roadmap.sh/projects/todo-list-api |
 | Python | [Expense Tracker API](Python/Expense%20Tracker%20API/) | https://roadmap.sh/projects/expense-tracker-api |
+| Python | [GitHub Trending CLI](Python/GitHub%20Trending%20CLI/) | https://roadmap.sh/projects/github-trending-cli |
 
 ## Structure
 
