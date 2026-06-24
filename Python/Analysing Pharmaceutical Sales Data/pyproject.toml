@@ -1,0 +1,13 @@
+[project]
+name = "analysing-pharmaceutical-sales-data"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas",
+    "matplotlib",
+    "notebook",
+    "ipykernel",
+]
+
+[tool.uv]
+package = false

@@ -19,6 +19,7 @@ My solutions to projects and tasks from [roadmap.sh](https://roadmap.sh).
 | Python | [GitHub Trending CLI](Python/GitHub%20Trending%20CLI/) | https://roadmap.sh/projects/github-trending-cli |
 | Python | [TMDB CLI](Python/TMDB%20CLI/) | https://roadmap.sh/projects/tmdb-cli |
 | Python | [Job Listings Scraper](Python/Job%20Listings%20Scraper/) | https://roadmap.sh/projects/job-listings-scraper |
+| Python | [Analysing Pharmaceutical Sales Data](Python/Analysing%20Pharmaceutical%20Sales%20Data/) | https://roadmap.sh/projects/pharmaceutical-sales-data |
 
 ## Structure
 
