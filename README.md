@@ -18,6 +18,7 @@ My solutions to projects and tasks from [roadmap.sh](https://roadmap.sh).
 | Python | [Expense Tracker API](Python/Expense%20Tracker%20API/) | https://roadmap.sh/projects/expense-tracker-api |
 | Python | [GitHub Trending CLI](Python/GitHub%20Trending%20CLI/) | https://roadmap.sh/projects/github-trending-cli |
 | Python | [TMDB CLI](Python/TMDB%20CLI/) | https://roadmap.sh/projects/tmdb-cli |
+| Python | [Job Listings Scraper](Python/Job%20Listings%20Scraper/) | https://roadmap.sh/projects/job-listings-scraper |
 
 ## Structure
 
