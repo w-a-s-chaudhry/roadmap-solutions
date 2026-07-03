@@ -20,6 +20,9 @@ My solutions to projects and tasks from [roadmap.sh](https://roadmap.sh).
 | Python | [TMDB CLI](Python/TMDB%20CLI/) | https://roadmap.sh/projects/tmdb-cli |
 | Python | [Job Listings Scraper](Python/Job%20Listings%20Scraper/) | https://roadmap.sh/projects/job-listings-scraper |
 | Python | [Analysing Pharmaceutical Sales Data](Python/Analysing%20Pharmaceutical%20Sales%20Data/) | https://roadmap.sh/projects/pharmaceutical-sales-data |
+| Python | [Cleaning Netflix Dataset](Python/Cleaning%20Netflix%20Dataset/) | https://roadmap.sh/projects/cleaning-netflix-dataset |
+| Python | [Titanic EDA](Python/Titanic%20EDA/) | https://roadmap.sh/projects/titanic-eda-python |
+| Python | [Data Visualization Tutorial](Python/Data%20Visualization%20Tutorial/) | https://roadmap.sh/projects/data-visualization-tutorial |
 
 ## Structure
 
