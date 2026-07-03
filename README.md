@@ -23,6 +23,7 @@ My solutions to projects and tasks from [roadmap.sh](https://roadmap.sh).
 | Python | [Cleaning Netflix Dataset](Python/Cleaning%20Netflix%20Dataset/) | https://roadmap.sh/projects/cleaning-netflix-dataset |
 | Python | [Titanic EDA](Python/Titanic%20EDA/) | https://roadmap.sh/projects/titanic-eda-python |
 | Python | [Data Visualization Tutorial](Python/Data%20Visualization%20Tutorial/) | https://roadmap.sh/projects/data-visualization-tutorial |
+| Python | [Querying SQL Python](Python/Querying%20SQL%20Python/) | https://roadmap.sh/projects/querying-sql-python |
 
 ## Structure
 
