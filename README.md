@@ -24,6 +24,7 @@ My solutions to projects and tasks from [roadmap.sh](https://roadmap.sh).
 | Python | [Titanic EDA](Python/Titanic%20EDA/) | https://roadmap.sh/projects/titanic-eda-python |
 | Python | [Data Visualization Tutorial](Python/Data%20Visualization%20Tutorial/) | https://roadmap.sh/projects/data-visualization-tutorial |
 | Python | [Querying SQL Python](Python/Querying%20SQL%20Python/) | https://roadmap.sh/projects/querying-sql-python |
+| Python | [Stock Price Time Series](Python/Stock%20Price%20Time%20Series/) | https://roadmap.sh/projects/stock-price-time-series |
 
 ## Structure
 

@@ -1,0 +1,14 @@
+[project]
+name = "stock-price-time-series"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas",
+    "matplotlib",
+    "yfinance",
+    "notebook",
+    "ipykernel",
+]
+
+[tool.uv]
+package = false
