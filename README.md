@@ -27,6 +27,7 @@ My solutions to projects and tasks from [roadmap.sh](https://roadmap.sh).
 | Python | [Stock Price Time Series](Python/Stock%20Price%20Time%20Series/) | https://roadmap.sh/projects/stock-price-time-series |
 | Python | [Ecommerce Data Analysis](Python/Ecommerce%20Data%20Analysis/) | https://roadmap.sh/projects/ecommerce-data-analysis |
 | Python | [Exploring Iris Dataset](Python/Exploring%20Iris%20Dataset/) | https://roadmap.sh/projects/exploring-iris-dataset |
+| Python | [Pandas Time Series](Python/Pandas%20Time%20Series/) | https://roadmap.sh/projects/pandas-time-series |
 
 ## Structure
 
